@@ -14,7 +14,29 @@
     <script type="text/jsx">
         const app = document.getElementById('app');
         const root = ReactDOM.createRoot(app);
-        root.render(<h1>Hello World</h1>);
+
+        function Header(props) {
+            const {title} = props;
+            return (
+                <header>
+                    <h1>{title}</h1>
+                </header>
+            )
+        }
+
+        function HomePage() {
+            const [likes, setLikes] = React.useState(0);
+            return (
+                <section>
+                    <Header title="React" />
+                    <div>
+                        <p>Liked <span>{likes}</span> times</p>
+                        <button onClick={() => setLikes(likes + 1)}>Like</button>
+                    </div>
+                </section>
+            )
+        }
+        root.render(<HomePage />);
     </script>
 </body>
 </html>
